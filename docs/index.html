@@ -18,12 +18,14 @@
 		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<!--  CSS Stylesheet -->
 	<link id="stylesheet" rel="stylesheet" href="//unpkg.com/docsify/themes/vue.css">
-        <link rel="stylesheet" type="text/css" href="styles/theme.css">
+    <link id="stylesheet_override" rel="stylesheet" type="text/css" href="styles/theme.css">
 
  <script>
 
 	var url =  "//unpkg.com/docsify/themes/dark.css";
 	var url2 = "//unpkg.com/docsify/themes/vue.css";
+	var override2 = "styles/theme.css";
+	var override = "styles/darkTheme.css";
 	var stylesheet = document.getElementById("stylesheet");
 	var show = false;
 	var darkmode = localStorage.getItem('darkmode')
@@ -37,11 +39,13 @@
  	  			},500);
                  if (show) {
                         stylesheet.setAttribute('href', url2);
+                        stylesheet_override.setAttribute('href', override2);
 						localStorage.setItem('darkmode', "disabled");
                            show = !show;
                        }
                  else {
                     stylesheet.setAttribute('href', url);
+                    stylesheet_override.setAttribute('href', override);
 					localStorage.setItem('darkmode', "enabled");
                     show = !show;
                     }
@@ -117,6 +121,7 @@
 
 			if(darkmode ==="enabled"){
 				stylesheet.setAttribute('href', url);
+				stylesheet_override.setAttribute('href', override);
 				show = !show;
 				document.querySelector("input[type='checkbox']").checked = true;
 			}
